@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tracker | Premium</title>
+    <!-- Fonts: Outfit (Modern, Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="app-container">
+        <header>
+            <h1><i class="fa-solid fa-wallet"></i> Wallet<span class="highlight">Wise</span></h1>
+            <p>Manage your wealth with clarity.</p>
+        </header>
+
+        <main>
+            <!-- Balance Dashboard -->
+            <section class="dashboard glass-panel">
+                <div class="balance-info">
+                    <h3>Total Balance</h3>
+                    <h2 id="balance-amount">₹0.00</h2>
+                </div>
+                <div class="chart-container" style="position: relative; height:150px; width:150px; margin: 0 auto;">
+                    <canvas id="expense-chart"></canvas>
+                </div>
+                <div class="stats-row">
+                    <div class="stat income">
+                        <div class="icon-box"><i class="fa-solid fa-arrow-up"></i></div>
+                        <div>
+                            <h4>Income</h4>
+                            <p id="income-amount" class="money plus">+₹0.00</p>
+                        </div>
+                    </div>
+                    <div class="stat expense">
+                        <div class="icon-box"><i class="fa-solid fa-arrow-down"></i></div>
+                        <div>
+                            <h4>Expense</h4>
+                            <p id="expense-amount" class="money minus">-₹0.00</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Add Transaction -->
+            <section class="add-transaction glass-panel">
+                <h3>Add New Transaction</h3>
+                <form id="transaction-form">
+                    <div class="form-control">
+                        <label for="text">Description</label>
+                        <input type="text" id="text" placeholder="e.g. Salary, Rent, Coffee..." />
+                    </div>
+                    <div class="form-control">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="General">General</option>
+                            <option value="Food">Food & Dining</option>
+                            <option value="Rent">Rent & Utilities</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Health">Health & Wellness</option>
+                            <option value="Salary">Salary (Income)</option>
+                            <option value="Investments">Investments (Income)</option>
+                        </select>
+                    </div>
+                    <div class="form-control">
+                        <label for="amount">Amount <small>(negative - expense, positive + income)</small></label>
+                        <input type="number" id="amount" placeholder="Enter amount..." step="0.01" />
+                    </div>
+                    <div class="form-control">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" />
+                    </div>
+                    <button class="btn" type="submit">Add Transaction</button>
+                    <!-- Alternatively we could use a toggle for income/expense, currently relying on sign -->
+                </form>
+            </section>
+
+            <!-- History -->
+            <section class="history-container glass-panel">
+                <div class="history-header">
+                    <h3>History</h3>
+                    <button id="clear-btn" class="clear-btn" title="Clear All History"><i
+                            class="fa-solid fa-trash-can"></i></button>
+                </div>
+                <ul id="list" class="list">
+                    <!-- Transactions will be added here via JS -->
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>Built with <i class="fa-solid fa-heart highlight"></i> by WalletWise</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
